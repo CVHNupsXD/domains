@@ -1,6 +1,7 @@
 docln.net
 medium.com
 store.steampowered.com
+steamcommunity.com
 
 thepiratebay.org
 rutracker.org
