@@ -1,2 +1,0 @@
-api.cds.dmm.com=jp
-apidgp-gameplayer.games.dmm.com=jp
