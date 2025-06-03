@@ -1,11 +1,14 @@
-docln.net
-ln.hako.vn
 medium.com
 reddit.com
 old.reddit.com
+
 store.steampowered.com
 steamcommunity.com
 
 thepiratebay.org
 rutracker.org
 nyaa.si
+
+docln.net
+ln.hako.vn
+mangadex.org
