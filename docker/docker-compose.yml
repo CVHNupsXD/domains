@@ -59,15 +59,15 @@ services:
     image: lscr.io/linuxserver/qbittorrent:latest
     container_name: qbittorrent
     environment:
-      - PUID: 1000
-      - PGID: 1000
-      - TZ: Asia/Bangkok
-      - WEBUI_PORT: 8080
-      - TORRENTING_PORT: 6881
-      - DOCKER_MODS: ghcr.io/vuetorrent/vuetorrent-lsio-mod:latest
+      PUID: 1000
+      PGID: 1000
+      TZ: Asia/Bangkok
+      WEBUI_PORT: 8080
+      TORRENTING_PORT: 6881
+      DOCKER_MODS: ghcr.io/vuetorrent/vuetorrent-lsio-mod:latest
     volumes:
       - ${DOCKER_DATA}/qbittorrent:/config
-      - ${DATA}/TorrentDownload:/downloads
+      - ${DATA}/TorrentDownload:/downloads:rw,rshared
     ports:
       - 8080:8080
       - 6881:6881
@@ -78,13 +78,13 @@ services:
     image: lscr.io/linuxserver/jellyfin:latest
     container_name: jellyfin
     environment:
-      - PUID: 1000
-      - PGID: 1000
-      - TZ: Asia/Bangkok
+      PUID: 1000
+      PGID: 1000
+      TZ: Asia/Bangkok
     volumes:
       - ${DOCKER_DATA}/jellyfin/library:/config
-      - ${ANIME_DIR}/tvseries:/data/tvshows
-      - ${ANIME_DIR}/movies:/data/movies
+      - ${ANIME_DIR}/tvseries:/data/tvshows:rw,rshared
+      - ${ANIME_DIR}/movies:/data/movies:rw,rshared
     ports:
       - 8096:8096
     restart: unless-stopped
@@ -94,13 +94,13 @@ services:
     image: lscr.io/linuxserver/kavita:latest
     container_name: kavita
     environment:
-      - PUID: 1000
-      - PGID: 1000
-      - TZ: Asia/Bangkok
-      - DOTNET_SYSTEM_GLOBALIZATION_INVARIANT: true
+      PUID: 1000
+      PGID: 1000
+      TZ: Asia/Bangkok
+      DOTNET_SYSTEM_GLOBALIZATION_INVARIANT: true
     volumes:
       - ${DOCKER_DATA}/kavita/config:/config
-      - ${DATA}:/data
+      - ${DATA}:/data:rw,rshared
     ports:
       - 5000:5000
     restart: unless-stopped
@@ -110,13 +110,13 @@ services:
     container_name: filebrowser
     restart: unless-stopped
     environment:
-      - PUID: 1000
-      - PGID: 1000
-      - FB_BASEURL: /filebrowser
+      PUID: 1000
+      PGID: 1000
+      FB_BASEURL: /filebrowser
     ports:
       - 5001:8080
     expose:
       - 5001
     volumes:
       - ${DOCKER_DATA}/filebrowser:/config
-      - ${DATA}:/data
+      - ${DATA}:/data:rw,rshared
